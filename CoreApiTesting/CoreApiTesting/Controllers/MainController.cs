@@ -5,6 +5,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -41,6 +42,32 @@ namespace CoreApiTesting.Controllers
         }
 
 
+
+        [HttpPost("getname1")]
+        public ActionResult<String> GetName1()
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                var claims = User.Claims;
+                return "Valid";
+            }
+            else
+            {
+                return "Invalid";
+            }
+        }
+
+        [Authorize]
+        [HttpPost("getname2")]
+        public Object GetName2()
+        {
+            var claims = User.Claims;
+            var name = claims.Where(p => p.Type == "name").FirstOrDefault()?.Value;
+            return new
+            {
+                data = name
+            };
+        }
 
 
 
