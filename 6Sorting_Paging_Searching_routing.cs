@@ -22,6 +22,8 @@ namespace QuotesApi.Controllers
         {
             _quotesDbContext = quotesDbContext;
         }
+        
+        //Sorting ka method
 
         // GET: api/<QuotesController>
         [HttpGet]
@@ -120,6 +122,8 @@ namespace QuotesApi.Controllers
 
 
         }
+        
+        //Paging ka method
 
         [HttpGet("[action]")]
         public IActionResult PagingQuote(int? pageNumber , int? pageSize)
