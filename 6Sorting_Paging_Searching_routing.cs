@@ -124,7 +124,7 @@ namespace QuotesApi.Controllers
         }
         
         //Paging ka method
-
+//https://localhost:44323/api/quotes/PagingQuote?pageNumber=2&pageSize=5
         [HttpGet("[action]")]
         public IActionResult PagingQuote(int? pageNumber , int? pageSize)
         {
